@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackstrom Monitor Mqtt Pack">
+  <meta name="author" content="Abhay">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Monitor Mqtt Pack - StackStrom Monitor Mqtt Pack</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Monitor Mqtt Pack";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/Watson-IoT/MonitorDocs/";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-159649729-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> StackStrom Monitor Mqtt Pack</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../">Get back to StackStrom Packs</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Monitor Mqtt Pack</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#ibm-maximo-monitor-mqtt-pack">IBM Maximo Monitor Mqtt Pack</a></li>
+    
+
+    <li class="toctree-l2"><a href="#quick-start"> Quick Start</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#prerequisites">Prerequisites</a></li>
+        
+            <li><a class="toctree-l3" href="#setup">Setup</a></li>
+        
+            <li><a class="toctree-l3" href="#configuration">Configuration</a></li>
+        
+            <li><a class="toctree-l3" href="#creating-vitual-environment-in-stackstorm-required-only-if-testing-locally">Creating Vitual environment in StackStorm (Required only if testing locally)</a></li>
+        
+            <li><a class="toctree-l3" href="#actions">Actions</a></li>
+        
+            <li><a class="toctree-l3" href="#sensor">Sensor</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">StackStrom Monitor Mqtt Pack</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Monitor Mqtt Pack</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="ibm-maximo-monitor-mqtt-pack">IBM Maximo Monitor Mqtt Pack</h1>
+<p>Content of pack</p>
+<ul>
+<li>Sensor to listen or subscribe data from a topic</li>
+<li>Action to clean data </li>
+<li>Action to publish data to a topic</li>
+<li>Action to publish bulk data to monitor</li>
+<li>Rule to filter data ingested to StackStrom</li>
+</ul>
+<h1 id="quick-start"><a name="QuickStart"></a> Quick Start</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>IBM Watson IOT Service and Stackstorm, and Python3.7 up and running.</p>
+<h2 id="setup">Setup</h2>
+<h3 id="install-ibm-maximo-monitor-mqtt-pack-on-local-stackstorm-env">Install IBM Maximo Monitor Mqtt pack on local StackStorm env</h3>
+<p>Clone from Github repo <a href="https://github.ibm.com/Watson-IoT/monitor_mqtt.git">IBM Maximo Monitor Mqtt pack</a>:</p>
+<pre><code># clone monitor_mqtt code from github repo
+git clone --branch st2 https://github.ibm.com/Watson-IoT/monitor_mqtt.git
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>Copy the example configuration in <a href="https://github.ibm.com/Watson-IoT/monitor_mqtt/blob/st2/monitor_mqtt.yaml.example">monitor_mqtt.yaml.example</a>
+to <code>/opt/stackstorm/configs/monitor_mqtt.yaml</code> and edit as required.</p>
+<ul>
+<li><code>tenant_id</code> - Tenant Id</li>
+<li><code>hostname</code> - MQTT Broker to connect to</li>
+<li><code>subscribe</code> - An array of MQTT topics to subscribe to (sensor only)</li>
+<li><code>port</code> - MQTT port to connect to (default: 1883)</li>
+<li><code>protocol</code> - MQTT protocol version (default: MQTTv311)</li>
+<li><code>client_id</code> - Client ID to register on MQTT broker</li>
+<li><code>userdata</code> - Custom userdata to include with each MQTT message payload</li>
+<li><code>username</code> - Username to connect to MQTT Broker</li>
+<li><code>password</code> - Password to connect to MQTT Broker</li>
+<li><code>ssl</code> - Enable SSL support (default: false)</li>
+<li><code>ssl_cacert</code> - Path to SSL CA Certificate</li>
+<li><code>ssl_cert</code> - Path to SSL Certificate</li>
+<li><code>ssl_key</code> - Path to SSL Key</li>
+<li><code>data_file_path</code> - Path of csv file to input for preprocessing </li>
+<li><code>json_schema_path</code> - Path of json file for validation of data file</li>
+<li><code>csvFilePath</code> - Path of csv file for input to Mqtt Publisher action</li>
+</ul>
+<p><code>data_file_path</code> and <code>json_schema_path</code> is mandatory to use clean data Action</p>
+<p><code>csvFilePath</code> is mandatory to use bulk publish Action</p>
+<p><strong>Note</strong> : When modifying the configuration in <code>/opt/stackstorm/configs/</code> please
+           remember to tell StackStorm to load these new values by running
+           <code>sudo st2ctl reload --register-configs</code></p>
+<h2 id="creating-vitual-environment-in-stackstorm-required-only-if-testing-locally">Creating Vitual environment in StackStorm (Required only if testing locally)</h2>
+<pre><code>Setup Monitor Mqtt Virtual Env in SackStorm 
+st2 run packs.setup_virtualenv packs=monitor_mqtt python3=True
+</code></pre>
+<h2 id="actions">Actions</h2>
+<pre><code>To clean and process csv data
+st2 run monitor_mqtt.clean_data
+
+To publish a message on a topic - monitor_mqtt.publish
+st2 run monitor_mqtt.publish topic="" message=""
+
+To publish clean csv data - monitor_mqtt.publishcsvdata
+st2  run monitor_mqtt.publishcsvdata topic=""
+
+To clean and publish data on a specific topic - monitor_mqtt.clean_data_mqtt_ingest_chain
+st2 run monitor_mqtt.clean_data_mqtt_ingest_chain topic=""
+</code></pre>
+<h2 id="sensor">Sensor</h2>
+<p>Connects to a Watson IOT broker, subscribing to various topics and emitting triggers
+into the system.</p>
+<p>Requires: config setting <code>subscribe</code>.
+Emits:</p>
+<ul>
+<li>trigger: monitor_mqtt.message</li>
+<li>payload: topic, message, userdata, qos, retain</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2021-02-16 08:41:29
+-->
