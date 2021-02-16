@@ -17,16 +17,16 @@ IBM Watson IOT Service and Stackstorm, and Python3.7 up and running.
 ## Setup
 
 ### Install IBM Maximo Monitor Mqtt pack on local StackStorm env
- Clone from Github repo [IBM Maximo Monitor Mqtt pack](https://github.ibm.com/Watson-IoT/monitor_mqtt.git):
+ Clone from Github repo [IBM Maximo Monitor Mqtt pack](https://github.com/maximo-developer/monitor_mqtt.git):
 
     
     # clone monitor_mqtt code from github repo
-    git clone --branch st2 https://github.ibm.com/Watson-IoT/monitor_mqtt.git
+    git clone --branch st2 https://github.com/maximo-developer/monitor_mqtt.git
     
 
 ## Configuration
 
-Copy the example configuration in [monitor_mqtt.yaml.example](https://github.ibm.com/Watson-IoT/monitor_mqtt/blob/st2/monitor_mqtt.yaml.example)
+Copy the example configuration in [monitor_mqtt.yaml.example](https://github.com/maximo-developer/monitor_mqtt/blob/main/monitor_mqtt.yaml.example)
 to `/opt/stackstorm/configs/monitor_mqtt.yaml` and edit as required.
 
 * `tenant_id` - Tenant Id

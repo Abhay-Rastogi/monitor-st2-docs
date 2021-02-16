@@ -33,7 +33,7 @@ Python 3.7
 
 ## Configuration
 
-3. Copy the example configuration in [monitor_ingest.yaml.example](./monitor_ingest.yaml.example)
+1. Copy the example configuration in [monitor_ingest.yaml.example](https://github.com/maximo-developer/monitor_ingest/blob/master/monitor_ingest.yaml.example)
 to `/opt/stackstorm/configs/monitor_ingest.yaml` and edit as per credentials copied in Step 2.
 
 Config file must have action_type, data_file_path and credentials keys.
@@ -42,7 +42,7 @@ To run a specific Actions use `action_type`, `data_file_path` and `credentials` 
 `data_file_path` : source json input file for specified action type
 `credentials` : Analytics service credentials
  
-** Check [config.schema.yaml](./config.schema.yaml) schema before creating your config file.
+** Check [config.schema.yaml](https://github.com/maximo-developer/monitor_ingest/blob/master/config.schema.yaml) schema before creating your config file.
 
 Example configuration:
 
@@ -122,18 +122,18 @@ The following actions are supported:
 * To Add Functions to an Entity use action_type - ``SetupAddFunctions``
 * Specify json file path in config -``data_file_path`` 
 #### Check /etc directory for Sample data files for Setup Entity Action
-* for SetupEntityAction sample [data_file_path](./etc/sample_usage_data.json)
-* for SetupAddConstants sample [data_file_path](./etc/sample_constant_data.json)
-* for SetupAddDimesions sample [data_file_path](./etc/sample_dimension_data.json)
-* for SetupAddFunctions sample [data_file_path](./etc/sample_function_data.json)
+* for SetupEntityAction sample [data_file_path](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_usage_data.json)
+* for SetupAddConstants sample [data_file_path](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_constant_data.json)
+* for SetupAddDimesions sample [data_file_path](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_dimension_data.json)
+* for SetupAddFunctions sample [data_file_path](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_function_data.json)
 
 ### Clean CSV metrics data from a CSV ``clean_csv_data``
 `[Mandatory]`
 * Specify json Schema file path in config -``json_schema_path``
 * Specify csv file path in config -``data_file_path``
 #### Check /etc directory for Sample data files for clean_csv_data Action
-* for clean_csv_data sample [data_file_path](./etc/sample_csv_data.csv)
-* for clean_csv_data sample [json_schema_path](./etc/csvSchema.json)
+* for clean_csv_data sample [data_file_path](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_csv_data.csv)
+* for clean_csv_data sample [json_schema_path](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/csvSchema.json)
 ``Action Output`` - clean and error csv files will be under ./etc/clean_data_output/__.csv
 
 ### Data metrics data ingestion using CSV ``csv_data_ingest``
@@ -141,8 +141,8 @@ The following actions are supported:
 * Specify json file path in config -``data_file_path``
 * Specify entity name in config - ``entity_name``
 #### Check /etc directory for Sample data files for csv_data_ingest Action
-* for csv_data_ingest [sample data file](./etc/sample_csv_data.csv)
-* or for a clean csv please check under ./etc/clean_data_output/
+* for csv_data_ingest [sample data file](https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_csv_data.csv)
+* or for a clean csv please check [under](https://github.com/maximo-developer/monitor_ingest/tree/master/etc/clean_data_output)
 
 
 ## Workflow 

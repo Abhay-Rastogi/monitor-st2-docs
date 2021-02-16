@@ -13,7 +13,7 @@ In this document you will learn how to get started with the different IBM Packs 
 
 ---
 
-**Updated: 2021-02-12**
+**Updated: 2021-02-16**
 
 ---
 © 2020 International Business Machines Corporation.  No part of this document may be reproduced or transmitted in any 
