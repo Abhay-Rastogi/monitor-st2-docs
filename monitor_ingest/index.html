@@ -19,7 +19,7 @@
     // Current page data
     var mkdocs_page_name = "Monitor Ingest Pack";
     var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/Watson-IoT/MonitorDocs/";
+    var mkdocs_page_url = "/monitor-st2-docs/";
   </script>
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
@@ -71,6 +71,34 @@
     <li class="toctree-l2"><a href="#ibm-maximo-monitor-ingest-pack">IBM Maximo Monitor Ingest Pack</a></li>
     
 
+    <li class="toctree-l2"><a href="#quick-start"> Quick Start</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#prerequisites">Prerequisites</a></li>
+        
+            <li><a class="toctree-l3" href="#setup">Setup</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#clone-monitor_ingest-code-from-github-repo">clone Monitor_Ingest code from github repo</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#get-credentials">Get credentials</a></li>
+        
+            <li><a class="toctree-l3" href="#configuration">Configuration</a></li>
+        
+            <li><a class="toctree-l3" href="#creating-vitual-environment-in-stackstorm-required-only-if-testing-in-st2-env">Creating Vitual environment in StackStorm (Required only if testing in St2 env)</a></li>
+        
+            <li><a class="toctree-l3" href="#actions">Actions</a></li>
+        
+            <li><a class="toctree-l3" href="#workflow">Workflow</a></li>
+        
+        </ul>
+    
+
     </ul>
 	    </li>
           
@@ -107,7 +135,150 @@
             <div class="section">
               
                 <h1 id="ibm-maximo-monitor-ingest-pack">IBM Maximo Monitor Ingest Pack</h1>
-<p><img alt="Ready: " src="../img/under_development_page.png" /></p>
+<p>This pack uses Maximo Monitor SDK (https://github.com/ibm-watson-iot/maximo-asset-monitor-sdk.git) in StackStorm dynamically. It has following features:</p>
+<ul>
+<li>Create Entities in Maximo Assset Monitor</li>
+<li>Add Constants, Dimensions and Functions</li>
+<li>Cleaning the CSV data files as per a valid schema</li>
+<li>Load metrics data from a CSV to Maximo</li>
+</ul>
+<h1 id="quick-start"><a name="QuickStart"></a> Quick Start</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>IBM monitor Ingest pack,
+IBM Cloud Access,
+IBM Maximo Analytics service Access, Stackstorm,
+Python 3.7</p>
+<h2 id="setup">Setup</h2>
+<h3 id="install-monitor-ingest-pack-on-local-stackstorm-env">Install Monitor Ingest pack on local StackStorm env</h3>
+<ol>
+<li>
+<p>Clone from Github repo <a href="https://github.com/maximo-developer/monitor_ingest">Monitor Ingest_pack</a>:</p>
+<p>```</p>
+<h1 id="clone-monitor_ingest-code-from-github-repo">clone Monitor_Ingest code from github repo</h1>
+<p>cd /opt/stackstorm/packs/
+git clone --branch st2 https://github.com/maximo-developer/monitor_ingest.git
+```</p>
+<h2 id="get-credentials">Get credentials</h2>
+<ol>
+<li>Set credentials to connect Watson Analytics Service:</li>
+<li>On the user interface, go to the Services tab.</li>
+<li>Select Watson IoT Platform Analytics and click View Details.</li>
+<li>In the Environment Variables field, click Copy to Clipboard.</li>
+</ol>
+</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<ol>
+<li>Copy the example configuration in <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/monitor_ingest.yaml.example">monitor_ingest.yaml.example</a>
+to <code>/opt/stackstorm/configs/monitor_ingest.yaml</code> and edit as per credentials copied in Step 2.</li>
+</ol>
+<p>Config file must have action_type, data_file_path and credentials keys.
+To run a specific Actions use <code>action_type</code>, <code>data_file_path</code> and <code>credentials</code> keys.
+<code>action_type</code> : action type name
+<code>data_file_path</code> : source json input file for specified action type
+<code>credentials</code> : Analytics service credentials</p>
+<p>** Check <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/config.schema.yaml">config.schema.yaml</a> schema before creating your config file.</p>
+<p>Example configuration:</p>
+<pre><code class="yaml">action_type : &quot;SetupEntityAction | SetupAddConstants | SetupAddDimesions | SetupAddFunctions &quot;
+entity_name : &quot;&quot;
+data_file_path : &quot;/opt/stackstorm/packs/monitor_ingest/etc/sample_usage_data.json&quot;
+credentials:
+    _id: &quot;id*******&quot;
+    tenantId: &quot;tenant Id&quot;
+    db2:
+      username: &quot;username&quot;
+      password: &quot;pwd&quot;
+      databaseName: BLUDB
+      port: 50001
+      httpsUrl: &quot;https://*******.cloud.ibm.com&quot;
+      host: &quot;*******.cloud.ibm.com&quot;
+      security: SSL
+    iotp:
+      url: &quot;https://orgId**.internetofthings.ibmcloud.com/api/v0002&quot;
+      orgId: &quot;org Id&quot;
+      host: &quot;orgId**.messaging.internetofthings.ibmcloud.com&quot;
+      port: 8883
+      asHost: &quot;*********.internetofthings.ibmcloud.com&quot;
+      apiKey: &quot;api_key&quot;
+      apiToken: &quot;api_token&quot;
+    messageHub:
+      brokers:
+      - broker-0-****************************.us-south.eventstreams.cloud.ibm.com:9093
+      - broker-1-****************************.us-south.eventstreams.cloud.ibm.com:9093
+      - broker-5-****************************.us-south.eventstreams.cloud.ibm.com:9093
+      - broker-4-****************************.us-south.eventstreams.cloud.ibm.com:9093
+      - broker-2-****************************.us-south.eventstreams.cloud.ibm.com:9093
+      - broker-3-****************************.us-south.eventstreams.cloud.ibm.com:9093
+      username: &quot;user name&quot;
+      password: &quot;password&quot;
+    objectStorage:
+      region: global
+      username: &quot;user name&quot;
+      password: &quot;password&quot;
+    config:
+      objectStorageEndpoint: https://undefined
+      bos_logs_bucket: &quot;log bucket&quot;
+      bos_runtime_bucket: &quot;runtime bucket&quot;
+      mh_topic_analytics_alerts: ''
+</code></pre>
+
+<p><strong>Note</strong> : When modifying the configuration in <code>/opt/stackstorm/configs/</code> please
+           remember to tell StackStorm to load these new values by running
+           <code>sudo st2ctl reload --register-configs</code></p>
+<h2 id="creating-vitual-environment-in-stackstorm-required-only-if-testing-in-st2-env">Creating Vitual environment in StackStorm (Required only if testing in St2 env)</h2>
+<pre><code>```
+# 1. Setup monitor_ingest Virtual Env in SackStorm 
+st2 run packs.setup_virtualenv packs=monitor_ingest python3=True
+
+# 2. Reload pack actions 
+sudo st2ctl reload --register-all
+
+# 3. Fetch list of installed actions 
+st2 action list -p monitor_ingest
+
+# 4. Run an action
+st2 run &lt;pack.action_name&gt;
+```
+</code></pre>
+<h2 id="actions">Actions</h2>
+<p>The following actions are supported:</p>
+<h3 id="setup-entity-setup_entity">Setup Entity <code>setup_entity</code></h3>
+<p><code>[Mandatory]</code>
+* To Setup Entity Action use action_type - <code>SetupEntityAction</code>
+* To Add Constants to an Entity use action_type - <code>SetupAddConstants</code>
+* To Add Dimesions to an Entity use action_type - <code>SetupAddDimesions</code>
+* To Add Functions to an Entity use action_type - <code>SetupAddFunctions</code>
+* Specify json file path in config -<code>data_file_path</code> </p>
+<h4 id="check-etc-directory-for-sample-data-files-for-setup-entity-action">Check /etc directory for Sample data files for Setup Entity Action</h4>
+<ul>
+<li>for SetupEntityAction sample <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_usage_data.json">data_file_path</a></li>
+<li>for SetupAddConstants sample <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_constant_data.json">data_file_path</a></li>
+<li>for SetupAddDimesions sample <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_dimension_data.json">data_file_path</a></li>
+<li>for SetupAddFunctions sample <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_function_data.json">data_file_path</a></li>
+</ul>
+<h3 id="clean-csv-metrics-data-from-a-csv-clean_csv_data">Clean CSV metrics data from a CSV <code>clean_csv_data</code></h3>
+<p><code>[Mandatory]</code>
+* Specify json Schema file path in config -<code>json_schema_path</code>
+* Specify csv file path in config -<code>data_file_path</code></p>
+<h4 id="check-etc-directory-for-sample-data-files-for-clean_csv_data-action">Check /etc directory for Sample data files for clean_csv_data Action</h4>
+<ul>
+<li>for clean_csv_data sample <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_csv_data.csv">data_file_path</a></li>
+<li>for clean_csv_data sample <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/csvSchema.json">json_schema_path</a>
+<code>Action Output</code> - clean and error csv files will be under ./etc/clean_data_output/__.csv</li>
+</ul>
+<h3 id="data-metrics-data-ingestion-using-csv-csv_data_ingest">Data metrics data ingestion using CSV <code>csv_data_ingest</code></h3>
+<p><code>[Mandatory]</code>
+* Specify json file path in config -<code>data_file_path</code>
+* Specify entity name in config - <code>entity_name</code></p>
+<h4 id="check-etc-directory-for-sample-data-files-for-csv_data_ingest-action">Check /etc directory for Sample data files for csv_data_ingest Action</h4>
+<ul>
+<li>for csv_data_ingest <a href="https://github.com/maximo-developer/monitor_ingest/blob/master/etc/sample_csv_data.csv">sample data file</a></li>
+<li>or for a clean csv please check <a href="https://github.com/maximo-developer/monitor_ingest/tree/master/etc/clean_data_output">under</a></li>
+</ul>
+<h2 id="workflow">Workflow</h2>
+<ul>
+<li>Action chain workflow added <code>clean_data_ingest_chain</code></li>
+</ul>
               
             </div>
           </div>
@@ -147,5 +318,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-02-16 08:41:29
+Build Date UTC : 2021-02-16 13:26:00
 -->
