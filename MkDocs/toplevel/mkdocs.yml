@@ -1,0 +1,17 @@
+site_name: IBM Stackstorm Packs
+site_url: https://github.ibm.com/Watson-IoT/MonitorDocs/
+site_author: Abhay Rastogi & Contributors
+site_description: "IBM Stackstorm Packs"
+google_analytics: ['UA-159649729-1', 'auto']
+site_dir: ../../site
+
+
+nav:
+  - Welcome to Maximo Stackstorm Integration: index.md
+  - About: about.md
+
+theme: readthedocs
+
+markdown_extensions:
+  - attr_list
+  - admonition

@@ -1,0 +1,15 @@
+site_name: StackStrom Monitor Ingest Pack
+site_url: https://github.ibm.com/Watson-IoT/MonitorDocs/
+site_author: Abhay
+site_description: "Stackstrom Monitor Ingest Pack"
+google_analytics: ['UA-159649729-1', 'auto']
+site_dir: ../../site/monitor_ingest
+
+nav:
+  - Get back to StackStrom Packs: ../
+  - Monitor Ingest Pack: index.md
+
+theme: readthedocs
+markdown_extensions:
+  - attr_list
+

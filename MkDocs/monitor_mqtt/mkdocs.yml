@@ -1,0 +1,16 @@
+site_name: StackStrom Monitor Mqtt Pack
+site_url: https://github.ibm.com/Watson-IoT/MonitorDocs/
+site_author: Abhay
+site_description: "Stackstrom Monitor Mqtt Pack"
+google_analytics: ['UA-159649729-1', 'auto']
+site_dir: ../../site/monitor_mqtt
+
+nav:
+  - Get back to StackStrom Packs: ../
+  - Monitor Mqtt Pack: index.md
+  - About: about.md
+
+theme: readthedocs
+markdown_extensions:
+  - attr_list
+
