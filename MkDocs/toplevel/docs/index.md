@@ -13,9 +13,9 @@ In this document you will learn how to get started with the different IBM Packs 
 
 ---
 
-**Updated: 2021-02-16**
+**Updated: 2021-02-18**
 
 ---
-© 2020 International Business Machines Corporation.  No part of this document may be reproduced or transmitted in any 
+© 2021 International Business Machines Corporation.  No part of this document may be reproduced or transmitted in any 
 form without written permission from IBM.  U.S. Government Users Restricted Rights — use, duplication or disclosure 
 restricted by GSA ADP Schedule Contract with IBM.
